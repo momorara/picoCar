@@ -1,0 +1,53 @@
+picoCar　左右回転の調整
+
+2026/8/20
+picoCarに使用しているSG90-360度タイプはPWMのデューティ比で回転数を決めている。
+まず、「前進時の直線性の調整」で前進時のPWM値を決定してください。
+
+config.pyには調整した値が入っていますが、個体差により誤差があるため微調整が必要な場合があります。
+
+def rigth_duty():
+    # 右車輪　前進 , 後退 ,停止
+    return 4400,5400,4900
+
+def left_duty():
+    # 左車輪　前進 , 後退 ,停止
+    return 5350,4450,4900
+
+def adjustment_rotate_time():
+    # 回転時　右回転R　左回転 
+    return 1.3,1.4,1.5,1.6
+
+def rotate_time():
+    # 回転時間　右回転　左回転 180度
+    return 1.38,1.64
+
+に初期値を設定している。
+今回のプログラム(adjust_rotate_left.py、adjust_rotate_rgith.py)では、上記PWMで180度回転する時間を設定している。
+
+設定方法
+パソコンにてadjust_rotate_left.pyをコピーしてmain.pyとしておく
+picoCarをパソコンのThonnyとUSB接続してmain.pyとconfig.pyを、picoCarにアップロードする。(この時picoCarのスイッチはoff)
+USBを抜き、電池を入れて、picoCarのスイッチをonにし、BootSwを押すとすると2秒後に回転し停止する。
+
+この時丁度180度回転する時間を設定する。
+
+config.pyの
+def adjustment_rotate_time():
+    # 前進 左車輪に対しての調整値
+    return 1.3,1.4,1.5,1.6
+を
+180度に対してのズレにより調整して、
+そして、picoCarにアップロードする。
+
+次にpicoCarを試走する際に、　moodeピンにターミナルブロックを差し込んで走らせる
+Mode 1にターミナルブロックを差し込んだ場合1.3秒回転する
+Mode 4にターミナルブロックを差し込んだ場合1.6秒回転する
+
+このように調整を行なっていき、丁度180度回転する時間を求めて、
+def rotate_time():
+    # 回転時間　右回転　左回転 180度
+    return 1.38,1.64
+に設定する
+
+この調整を行うことで、若干の誤差が残るが、概ね180度回転が得られる。
