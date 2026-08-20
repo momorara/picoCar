@@ -2,7 +2,7 @@
 picoCarのためのプログラムと資料
 
 ラズパイpicoを使ったロボットカー、スマートカーを安価に製作、勉強できる教材 <br>
-<img width="1000" height="750" alt="IMG_4258" src="https://github.com/user-attachments/assets/64d133b1-d468-4db9-9cc8-ecce78ff666c" />
+<img width="500" height="375" alt="IMG_4258のコピー" src="https://github.com/user-attachments/assets/78060b5d-4f35-440e-a7a5-7271ca4d217c" />
 
 
 <<概要>><br>
