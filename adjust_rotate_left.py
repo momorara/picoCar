@@ -25,14 +25,14 @@ import lib_mode
 # GPIO pin設定
 rigth_PIN = 0
 left_PIN  = 1
-ligth = PWM(Pin(rigth_PIN))
-ligth.freq(50)
+rigth = PWM(Pin(rigth_PIN))
+rigth.freq(50)
 left = PWM(Pin(left_PIN))
 left.freq(50)
 
 # duty設定関数
-def set_ligth(duty):
-    ligth.duty_u16(duty)
+def set_rigth(duty):
+    rigth.duty_u16(duty)
 def set_left(duty):
     left.duty_u16(duty)
 
@@ -54,18 +54,18 @@ while True:
         lib_LED_pico.LEDonoff(2)
 
         print("停止")
-        set_ligth(rigth_stop)
+        set_rigth(rigth_stop)
         set_left(left_stop)
 
         # modeターミナルブロックの位置に対応した値回転する
         mode = lib_mode.mode_pin()
         print("左回転",left_back,rigth_foward)
-        set_ligth(rigth_foward)
+        set_rigth(rigth_foward)
         set_left(left_back)
         print(adj[mode-1])
         time.sleep(adj[mode-1])
 
         print("停止")
-        set_ligth(rigth_stop)
+        set_rigth(rigth_stop)
         set_left(left_stop)
 

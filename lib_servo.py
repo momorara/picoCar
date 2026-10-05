@@ -28,14 +28,14 @@ import random
 # GPIO pin設定
 rigth_PIN = 0
 left_PIN  = 1
-ligth = PWM(Pin(rigth_PIN))
-ligth.freq(50)
+rigth = PWM(Pin(rigth_PIN))
+rigth.freq(50)
 left = PWM(Pin(left_PIN))
 left.freq(50)
 
 # duty設定関数
-def set_ligth(duty):
-    ligth.duty_u16(duty)
+def set_rigth(duty):
+    rigth.duty_u16(duty)
 def set_left(duty):
     left.duty_u16(duty)
 
@@ -52,29 +52,29 @@ dist = []
 def left_lotate(deg):
     if deg > 180: deg=180
     lotate_deg = left_180rotate_time * (deg / 180)
-    set_ligth(rigth_foward)
+    set_rigth(rigth_foward)
     set_left(left_back)
     time.sleep(lotate_deg)
-    set_ligth(rigth_stop)
+    set_rigth(rigth_stop)
     set_left(left_stop)
 
 def rigth_lotate(deg):
     if deg > 180: deg=180
     lotate_deg = rigth_180rotate_time * (deg / 180)
-    set_ligth(rigth_back)
+    set_rigth(rigth_back)
     set_left(left_foward)
     time.sleep(lotate_deg)
-    set_ligth(rigth_stop)
+    set_rigth(rigth_stop)
     set_left(left_stop)
     
 def run():
     print("前進",left_foward ,rigth_foward)
-    set_ligth(rigth_foward)
+    set_rigth(rigth_foward)
     set_left(left_foward)
 
 def stop():
     print("停止")
-    set_ligth(rigth_stop)
+    set_rigth(rigth_stop)
     set_left(left_stop)
 
 
